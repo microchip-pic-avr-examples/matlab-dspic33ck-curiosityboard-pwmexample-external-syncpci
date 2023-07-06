@@ -1,6 +1,6 @@
 ![image](images/microchip.jpg) 
 
-## %repoDescritpion%
+## matlab dspic33ck curiosityboard pwmexample external syncpci
 
 Board Image if any.
 
