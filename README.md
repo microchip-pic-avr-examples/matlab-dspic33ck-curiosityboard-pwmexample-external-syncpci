@@ -1,17 +1,21 @@
 ![image](images/microchip.jpg) 
 
 # PWM Peripheral Example: 
-# External Synchronization Using Sync PCI Feature on dsPIC33CK Curiosity Board and MATLAB SIMULINK
+# External Synchronization - Sync PCI Feature of PWM using dsPIC33CK Curiosity Board and MATLAB SIMULINK
 
 ## 1. INTRODUCTION
-This document describes implementation of PWM switching using external pulse synchronization. The example is implemented on the dsPIC33CK curiosity development board and demonstrates the Sync PCI feature of the High Resolution PWM module in the dsPIC33CK Digital Signal Controllers.
+This document describes the synchroniztion of PWM with an external pulse. This example explores Sync PCI feature of High Resolution PWM module in the dsPIC33CK to implement it. The demonstration uses the dsPIC33CK curiosity development board with MATLAB and SIMULINK.
 
 ### 1.1 External synchronization using Sync PCI Feature 
-The two PWM generators, PG1 and PG2, are configured in Center Aligned, Complementary mode. 
+The two PWM generators, PG1 and PG2 used in the example are configured in Independent edge, Complementary mode. 
 
-Also, a Timer1 module is configured to generate a signal at a 100 Hz rate on output port pin RD6. Another port pin, RC13(RP61/PWM8L/PMA5/RC13), is configured as the PWM PCI18.  The output pulse on port RD6 is applied to port RP61 by interconnecting them to produce an external synchronization signal to synchronize PG1 and PG2 generators.
+Also, a Timer1 module is configured to generate a pulse signal at 100Hz on output port pin RD6. Another port pin, RC13(RP61/PWM8L/PMA5/RC13), is configured as the PWM PCI8.  The output pulse on port RD6 is applied to port RP61 by interconnecting them to produce an external synchronization signal to synchronize PG1 and PG2 generators.
 
 The start of the cycle (SOCS PGxCONH<3:0>) of PG1 and PG2 are set to 0b1111 (PWM PCI sync function) to start on the PCI sync output. The input of the PCI sync block is the external signal applied on port RC13. Also, the sync polarity is set to High to trigger it on a rising edge of the external signal.
+
+
+  <p align="left" >
+  <img  src="images/blockdiagram.png"></p>
 
 When a rising edge is detected on the external synchronization signal applied on the port RC13/RP61(configured as PCI8), the PG1 and PG2 produce output pulses on PWM1H and PWM2H. Observe that the start of the cycle of both PG1 and PG2 is synchronized with the rising edge of the external sync signal.
 
@@ -19,14 +23,6 @@ In this configuration, the PWM generators PG1 and PG2 will send out PWMs only af
 
   <p align="left" >
   <img  src="images/pwm.png"></p>
-
-Configuration Summary
-- Independent Mode
-- Complementary Output Mode
-- PCI Sync feature using PCI18
-
-  <p align="left" >
-  <img  src="images/blockdiagram.png"></p>
 
 ## 2.	SUGGESTED DEMONSTRATION REQUIREMENTS
 ### 2.1 MATLAB Model Required for the Demonstration
@@ -65,7 +61,9 @@ Configuration Summary
     <p align="left" >
     <img  src="images/har2.png"></p>
 
-3. Connect the PWM pins RB10, RB11, RB12, RB13, RB14 and RB15 to the oscilloscope to monitor the PWM signals. </p>
+3. Interconnect the pins RD6 and RC13 on the dsPIC33CK curiosity board.
+
+4. Connect the PWM pins RB10, RB11, RB12 and RB13 to the oscilloscope to monitor the PWM signals. </p>
 
 ## 4.	BASIC DEMONSTRATION
 <p style='text-align: justify;'> Follow the instructions step-by-step, to set up and run the demo example:</p>
@@ -101,6 +99,8 @@ Configuration Summary
     </p>
 
 7.	<p style='text-align: justify;'>If the device is successfully programmed, <b>LED1 and LED2</b> will be blinking. 
+
+8. Monitor the PWM signals on the pins RB10, RB11, RB12 and RB13 using oscilloscope.
 
 ##  5. ADDING C SOURCE FILE TO THE SIMULINK MODEL:
 The model incorporates a C source file, which has configurations required to implement various PWM scheme Sync PCI feature of the High Resolution PWM. Follow the steps below to add a C source file into the Simulink model.
