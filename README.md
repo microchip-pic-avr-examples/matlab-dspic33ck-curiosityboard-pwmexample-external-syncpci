@@ -66,7 +66,7 @@ In this configuration, the PWM generators PG1 and PG2 will send out PWMs only af
     <p align="left" >
     <img  src="images/har3.png"></p>
 
-4. Connect the PWM pins RB10, RB11, RB12 and RB13 to the oscilloscope to monitor the PWM signals. </p>
+4. Connect the external pulse on the pin RD6/RC13 and PWM pins RB10, RB11, RB12, RB13 to the oscilloscope to monitor the PWM signals. </p>
 
 ## 4.	BASIC DEMONSTRATION
 <p style='text-align: justify;'> Follow the instructions step-by-step, to set up and run the demo example:</p>
@@ -103,7 +103,7 @@ In this configuration, the PWM generators PG1 and PG2 will send out PWMs only af
 
 7.	<p style='text-align: justify;'>If the device is successfully programmed, <b>LED1 and LED2</b> will be blinking. 
 
-8. Monitor the PWM signals on the pins RB10, RB11, RB12 and RB13 using oscilloscope.
+8. Monitor the external pulse on the pin RD6/RC13 and PWM signals on the pins RB10, RB11, RB12, RB13 using oscilloscope.
 
 ##  5. ADDING C SOURCE FILE TO THE SIMULINK MODEL:
 The model incorporates a C source file, which has configurations required to implement various PWM scheme Sync PCI feature of the High Resolution PWM. Follow the steps below to add a C source file into the Simulink model.
