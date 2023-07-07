@@ -11,7 +11,7 @@ The two PWM generators, PG1 and PG2 used in the example are configured in Indepe
 
 Also, a Timer1 module is configured to generate a pulse signal at 100Hz on output port pin RD6. Another port pin, RC13(RP61/PWM8L/PMA5/RC13), is configured as the PWM PCI8.  The output pulse on port RD6 is applied to port RP61 by interconnecting them to produce an external synchronization signal to synchronize PG1 and PG2 generators.
 
-The start of the cycle (SOCS PGxCONH<3:0>) of PG1 and PG2 are set to 0b1111 (PWM PCI sync function) to start on the PCI sync output. The input of the PCI sync block is the external signal applied on port RC13. Also, the sync polarity is set to High to trigger it on a rising edge of the external signal.
+The start of the cycle (SOCS PGxCONH<3:0>) of PG1 and PG2 are set to 0b1111 (PWM PCI sync function) to start on the PCI sync output. The input of the PCI sync block is the external signal applied on port RC13. Also, the sync polarity is set to High to trigger it on a rising edge of the external signal. Refer the block diagram below for the configuration details.
 
 
   <p align="left" >
@@ -62,6 +62,9 @@ In this configuration, the PWM generators PG1 and PG2 will send out PWMs only af
     <img  src="images/har2.png"></p>
 
 3. Interconnect the pins RD6 and RC13 on the dsPIC33CK curiosity board.
+
+    <p align="left" >
+    <img  src="images/har3.png"></p>
 
 4. Connect the PWM pins RB10, RB11, RB12 and RB13 to the oscilloscope to monitor the PWM signals. </p>
 
